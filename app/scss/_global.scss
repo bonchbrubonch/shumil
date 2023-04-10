@@ -1,0 +1,328 @@
+html {
+  box-sizing: border-box;
+  height: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-size: inherit;
+}
+
+body {
+  height: 100%;
+  min-width: 320px;
+  overflow-x: hidden;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 28px;
+  color: $title;
+  background-color: #fbfbfc;
+}
+
+/*прижимаем футоер к низу страницы*/
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.content {
+  flex: 1 0 auto;
+}
+
+.footer {
+  flex: 0 0 auto;
+}
+
+/*прижимаем футоер к низу страницы*/
+
+.container {
+  max-width: 1190px;
+  padding: 0px 10px;
+  margin: 0 auto;
+}
+
+.title {
+  @extend %playfair;
+  font-size: 50px;
+  line-height: 66px;
+  color: $title;
+}
+
+.button {
+  position: relative;
+  display: inline-block;
+  padding: 15px 30px;
+  background: linear-gradient(115.2deg, #03DAE8 16%, #528DFF 84%);
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 30px;
+  color: #fff;
+  transition: linear .2s;
+  z-index: 100;
+  &::before{
+    position: absolute;
+    content: "";
+    left: 0%;
+    right: 0%;
+    top: -19px;
+    width: 100%;
+    height: 134px;
+    background-image: url('../images/dest/content/btn-shadow.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    transition: linear .2s;
+  }
+  &:hover {
+    transform: translateY(-5px);
+    &::before{
+      transform: scale(1.1);
+    }
+  }
+  &:active{
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.2);
+  }
+}
+
+
+.articl__btn {
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  border: 1px solid #EFEFEF;
+  background-color: #fbfbfc;
+  border-radius: 5px;
+  border-radius: 5px;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 28px;
+  outline: none;
+  cursor: pointer;
+  color: $title;
+  transition: linear .2s;
+  text-align: left;
+
+  &:hover {
+    border-color: $blue;
+    text-shadow: 0 0 0.75px #009fff, 0 0 0.75px #009fff;
+    color: $blue;
+  }
+}
+
+.mixitup-control-active {
+  background-color: #528DFF;
+  font-weight: 700;
+  color: #fff;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+//хлеббные крошки
+.breadcrumbs {
+  background-color: transparent;
+
+  &__inner {
+    padding: 15px 10px;
+    overflow: hidden;
+    max-width: 1130px;
+    margin: 0 auto;
+  }
+
+  &__list {
+    li {
+      display: inline-block;
+      position: relative;
+      font-size: 16px;
+      line-height: 28px;
+      color: $text;
+
+      &+li {
+        padding-left: 24px;
+
+        &::before {
+          content: ">";
+          left: 5px;
+          position: absolute;
+          color: $text;
+        }
+      }
+
+      &:last-child {
+
+        a,
+        span {
+          color: $text;
+        }
+      }
+    }
+
+    a {
+      color: $text;
+    }
+  }
+}
+
+//пагинация
+.pagination__list {
+  li {
+    display: inline-block;
+
+    &+li {
+      margin-left: 10px;
+    }
+  }
+
+  a,
+  span {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    font-size: 14px;
+    line-height: 28px;
+    border: 1px solid #EFEFEF;
+    &.active {
+      border-color: $blue;
+      border-radius: 5px;
+      color: $blue;
+      font-size: 14px;
+      line-height: 28px;
+    }
+    &.space{
+      border: none;
+    }
+  }
+  button{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 28px;
+    color: $text;
+  }
+}
+
+.disk {
+  position: absolute;
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(115.2deg, #03DAE8 16%, #528DFF 84%);
+  transition: all .2s;
+  cursor: pointer;
+  &::before {
+    position: absolute;
+    width: 14px;
+    height: 22px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    content: "";
+    background-image: url('../images/dest/content/play.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+ 
+  &:hover{
+    background: linear-gradient(115.2deg, #528DFF 16%, #03DAE8 84%);
+  }
+  &:active{
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+}
+
+
+.ellipse{
+  position: relative;
+  &::after{
+    position: absolute;
+    left: 50%;
+    top: 70%;
+    transform: translate(-50%,-50%);
+    content: "";
+    width: 170%;
+    height: 170%;
+    background-image: url('../images/dest/content/ellipse.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    z-index: -1;
+  }
+}
+
+.list {
+  padding: 30px;
+  background-color: #2b2c2cbd;
+
+  h1 {
+    margin: 0px 0px 1.25rem 0px;
+    font-size: 2.5rem;
+    line-height: 120%;
+    color: #fff;
+  }
+
+  h2 {
+    margin: 0px 0px 1rem 0px;
+    font-size: 1.25rem;
+    color: #fff;
+  }
+
+  ol li {
+    margin: 0 0 15px 0;
+    list-style-type: decimal;
+
+    a {
+      font-size: 16px;
+      color: #ebe691;
+
+      &:visited {
+        color: #aaa768;
+      }
+    }
+
+
+    &::marker {
+      color: #fff;
+    }
+  }
+
+}
